@@ -7,5 +7,10 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
 
-  modules: ["@nuxt/ui"],
+  modules: ["@primevue/nuxt-module"],
+  primevue: {
+    options: {
+      unstyled: true,
+    },
+  },
 });
