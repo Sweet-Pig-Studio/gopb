@@ -3,7 +3,8 @@
 </script>
 
 <template>
-  <div class="text-[blue]">
-hi
-  </div>
+  <main>hi
+    <div>map form controls</div>
+    <div>map</div>
+  </main>
 </template>
