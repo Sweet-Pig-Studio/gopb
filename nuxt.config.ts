@@ -7,10 +7,7 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
 
-  modules: ["@primevue/nuxt-module"],
-  primevue: {
-    options: {
-      unstyled: true,
-    },
-  },
+  modules: ["@nuxtjs/tailwindcss"],
+  tailwindcss: { exposeConfig: true }
+
 });
