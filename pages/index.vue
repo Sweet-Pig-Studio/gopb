@@ -3,8 +3,6 @@
 </script>
 
 <template>
-  <main>hi
-    <div>map form controls</div>
+    <MapFormControls />
     <div>map</div>
-  </main>
 </template>
