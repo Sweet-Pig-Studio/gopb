@@ -21,14 +21,14 @@
           <span class="label-text"> View as... </span>
         </legend>
         <div class="join">
-          <button class="btn join-item rounded">Map</button>
-          <button class="btn join-item rounded">List</button>
+          <button @click.prevent="toggleView" :class="['btn', 'join-item', 'rounded', { 'bg-primary': viewMap }]">Map</button>
+          <button @click.prevent="toggleView" :class="['btn', 'join-item', 'rounded', { 'bg-primary': !viewMap }]">List</button>
         </div>
       </fieldset>
     </div>
   </form>
 </template>
 
-<script setup lang="ts"></script>
-
-<style scoped></style>
+<script setup lang="ts">
+defineProps<{viewMap: boolean, toggleView: (payload: MouseEvent) => void}>();
+</script>
