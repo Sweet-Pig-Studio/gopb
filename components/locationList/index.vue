@@ -26,15 +26,13 @@
           </div>
         </td>
         <td>
-          <div class="text-sm text-gray-500 space-x-1 space-y-2">
-            <div v-for="cuisine in location.cuisine" class="badge badge-accent">{{ cuisine }}</div>
-          </div>
+          <BadgeList :items="location.cuisine"/>
         </td>
         <td>
           <LocationStats :location="location"/>
         </td>
         <td>
-          <button class="btn rounded join-item bg-primary">
+          <button class="btn rounded join-item bg-primary" @click="setCurrentLocation(location)">
             See More Information
           </button>
         </td>
@@ -45,7 +43,7 @@
 
 <script setup lang="ts">
 import type { Location } from '~/types/globals.ts';
-defineProps<{locations: Location[] | null}>();
+defineProps<{locations: Location[] | null, setCurrentLocation: (location: Location) => void}>();
 
 </script>
 

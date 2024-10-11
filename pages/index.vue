@@ -3,15 +3,21 @@
     <!-- waiting on next release from nuxt for bug fix -->
     <!-- <Map></Map> -->
     <div v-if="viewMap">map</div>
-    <LocationList v-else :locations="data"/>
+    <LocationList v-else :locations="data" :setCurrentLocation="setCurrentLocation"/>
+    <LocationDetails v-if="currentLocation" :location="currentLocation" />
 </template>
 <script setup lang="ts">
 import type { Location } from '~/types/globals.ts';
 
 const runtimeConfig = useRuntimeConfig()
+const viewMap = useState(() => true);
+const currentLocation = useState<Location | null>(() => null);
+
 const { data } = await useFetch<Location[] | null>(`${runtimeConfig.public.apiURL}/locations`);
 
-const viewMap = useState(() => true);
+function setCurrentLocation(location: Location) {
+  currentLocation.value = location;
+}
 
 function toggleView() {
   viewMap.value = !viewMap.value
