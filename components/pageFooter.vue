@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer bg-base-100 text-base-content p-10 fixed inset-x-0 bottom-0 shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]">
+  <footer class="footer bg-base-100 text-base-content p-10 border-t-2 border-gray">
     <nav>
       <h6 class="footer-title">Company</h6>
       <a class="link link-hover">About us</a>

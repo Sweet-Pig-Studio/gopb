@@ -27,22 +27,11 @@
         </td>
         <td>
           <div class="text-sm text-gray-500 space-x-1 space-y-2">
-            <div v-for="cuisine in location.cuisine" class="badge badge-secondary">{{ cuisine }}</div>
+            <div v-for="cuisine in location.cuisine" class="badge badge-accent">{{ cuisine }}</div>
           </div>
         </td>
         <td>
-          <div class="stats stats-horizontal">
-            <div class="stat">
-              <div class="stat-title">Rating</div>
-              <div class="stat-value">{{ location.userRating }}/5</div>
-              <div class="stat-desc">collected from GOPB users</div>
-            </div>
-            <div class="stat">
-              <div class="stat-title">Rating</div>
-              <div class="stat-value">{{ location.editorRating}}/5</div>
-              <div class="stat-desc">based on editor's personal experience</div>
-            </div>
-          </div>
+          <LocationStats :location="location"/>
         </td>
         <td>
           <button class="btn rounded join-item bg-primary">
