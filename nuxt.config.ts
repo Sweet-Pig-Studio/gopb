@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
-  devtools: { enabled: false },
+  devtools: { enabled: true },
 
   typescript: {
     typeCheck: true,
@@ -12,6 +12,11 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "nuxt-maplibre"
   ],
-  tailwindcss: { exposeConfig: true }
+  tailwindcss: { exposeConfig: true },
 
+  runtimeConfig: {
+    public: {
+      apiURL: process.env.NUXT_API_URL,
+    }
+  }
 });
