@@ -3,7 +3,7 @@
     <!-- waiting on next release from nuxt for bug fix -->
     <!-- <Map></Map> -->
     <div v-if="viewMap">map</div>
-    <div v-else>list view</div>
+    <LocationList v-else />
 </template>
 <script setup lang="ts">
 
