@@ -8,7 +8,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="location in locations">
+      <tr
+        v-for="location in locations"
+        :class="{
+          'bg-accent': currentLocation && currentLocation.name === location.name,
+        }"
+      >
         <td>
           <div class="flex items-center space-x-3 truncate">
             <div class="avatar">
@@ -21,18 +26,23 @@
             </div>
             <div className="flex flex-col">
               <div className="font-bold text-xl">{{ location.name }}</div>
-              <div className="text-sm text-gray-500">{{ location.address }}</div>
+              <div className="text-sm text-gray-500">
+                {{ location.address }}
+              </div>
             </div>
           </div>
         </td>
         <td>
-          <BadgeList :items="location.cuisine"/>
+          <BadgeList :items="location.cuisine" />
         </td>
         <td>
-          <LocationStats :location="location"/>
+          <LocationStats :location="location" />
         </td>
         <td>
-          <button class="btn rounded join-item bg-primary" @click="setCurrentLocation(location)">
+          <button
+            class="btn rounded join-item bg-primary"
+            @click="setCurrentLocation(location)"
+          >
             See More Information
           </button>
         </td>
@@ -43,8 +53,7 @@
 
 <script setup lang="ts">
 import type { Location } from '~/types/globals.ts';
-defineProps<{locations: Location[] | null, setCurrentLocation: (location: Location) => void}>();
-
+defineProps<{locations: Location[] | null, setCurrentLocation: (location: Location) => void, currentLocation: Location | null}>();
 </script>
 
 <style scoped></style>

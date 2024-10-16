@@ -3,7 +3,7 @@
     <!-- waiting on next release from nuxt for bug fix -->
     <!-- <Map></Map> -->
     <div v-if="viewMap">map</div>
-    <LocationList v-else :locations="data" :setCurrentLocation="setCurrentLocation"/>
+    <LocationList v-else :locations="data" :setCurrentLocation="setCurrentLocation" :currentLocation="currentLocation"/>
     <LocationDetails v-if="currentLocation" :location="currentLocation" />
 </template>
 <script setup lang="ts">
