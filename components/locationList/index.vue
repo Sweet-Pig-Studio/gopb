@@ -11,7 +11,8 @@
       <tr
         v-for="location in locations"
         :class="{
-          'bg-accent': currentLocation && currentLocation.name === location.name,
+          'bg-accent':
+            currentLocation && currentLocation.name === location.name,
         }"
       >
         <td>
@@ -52,8 +53,12 @@
 </template>
 
 <script setup lang="ts">
-import type { Location } from '~/types/globals.ts';
-defineProps<{locations: Location[] | null, setCurrentLocation: (location: Location) => void, currentLocation: Location | null}>();
+import type { Location } from "~/types/globals.ts";
+defineProps<{
+  locations: Location[];
+  setCurrentLocation: (location: Location) => void;
+  currentLocation: Location | null;
+}>();
 </script>
 
 <style scoped></style>

@@ -13,3 +13,11 @@ export interface Location {
   editorRating: number;
   userRating: number;
 }
+
+// make each item an enum at some point? 
+export interface Filters {
+  cuisine: string;
+  locationType: string;
+  plantBasedLevel: string;
+}
+

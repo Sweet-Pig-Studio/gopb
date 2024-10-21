@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-neutral rounded">
+  <div class="card bg-neutral rounded mt-6">
     <div class="card-body">
       <div className="flex flex-row justify-between items-start">
         <div className="flex flex-col gap-2 w-2/3 pr-20">

@@ -7,22 +7,35 @@
       <MapFormControlsSelectValues
         :selectOptions="['Any', 'Restaurant', 'Grocery']"
         :selectLabel="'Location Type:'"
+        v-model:filter="filters.locationType"
       />
       <MapFormControlsSelectValues
-        :selectOptions="['Any', 'coming soon', 'for real', 'soon']"
+        :selectOptions="cuisineOptions"
         :selectLabel="'Cuisine Type:'"
+        v-model:filter="filters.cuisine"
       />
       <MapFormControlsSelectValues
         :selectOptions="['Any', 'Fully Plant Based', 'Partially Plant Based']"
         :selectLabel="'Plant-Based Level:'"
+        v-model:filter="filters.plantBasedLevel"
       />
       <fieldset class="form control">
         <legend class="label">
           <span class="label-text"> View as... </span>
         </legend>
         <div class="join">
-          <button @click.prevent="toggleView" :class="['btn', 'join-item', 'rounded', { 'bg-primary': viewMap }]">Map</button>
-          <button @click.prevent="toggleView" :class="['btn', 'join-item', 'rounded', { 'bg-primary': !viewMap }]">List</button>
+          <button
+            @click.prevent="toggleView"
+            :class="['btn', 'join-item', 'rounded', { 'bg-primary': viewMap }]"
+          >
+            Map
+          </button>
+          <button
+            @click.prevent="toggleView"
+            :class="['btn', 'join-item', 'rounded', { 'bg-primary': !viewMap }]"
+          >
+            List
+          </button>
         </div>
       </fieldset>
     </div>
@@ -30,5 +43,12 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{viewMap: boolean, toggleView: (payload: MouseEvent) => void}>();
+import type { Filters } from "~/types/globals.ts";
+
+defineProps<{
+  viewMap: boolean;
+  toggleView: (payload: MouseEvent) => void;
+  filters: Filters;
+  cuisineOptions: string[];
+}>();
 </script>
