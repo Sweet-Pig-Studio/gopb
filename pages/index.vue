@@ -7,7 +7,7 @@
       :cuisineOptions="cuisineOptions"
     />
     <!-- waiting on next release from nuxt for bug fix -->
-    <Map v-if="viewMap"></Map>
+    <Map v-if="viewMap" :locations="filteredData"></Map>
     <LocationList
       v-else
       :locations="filteredData"
