@@ -7,7 +7,13 @@
       :cuisineOptions="cuisineOptions"
     />
     <!-- waiting on next release from nuxt for bug fix -->
-    <Map v-if="viewMap" :locations="filteredData"></Map>
+    <Map
+      v-if="viewMap"
+      :locations="filteredData"
+      :setCurrentLocation="setCurrentLocation"
+      :currentLocation="currentLocation"
+      @update:current-location="setCurrentLocation"
+    ></Map>
     <LocationList
       v-else
       :locations="filteredData"
@@ -63,7 +69,7 @@ const cuisineOptions = computed(() => {
   return list;
 });
 
-function setCurrentLocation(location: Location) {
+function setCurrentLocation(location: Location | null) {
   currentLocation.value = location;
 }
 

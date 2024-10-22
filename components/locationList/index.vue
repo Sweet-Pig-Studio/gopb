@@ -56,7 +56,7 @@
 import type { Location } from "~/types/globals.ts";
 defineProps<{
   locations: Location[];
-  setCurrentLocation: (location: Location) => void;
+  setCurrentLocation: (location: Location | null) => void;
   currentLocation: Location | null;
 }>();
 </script>
