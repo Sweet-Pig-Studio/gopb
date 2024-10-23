@@ -70,6 +70,7 @@ const cuisineOptions = computed(() => {
 });
 
 function setCurrentLocation(location: Location | null) {
+  console.log(location)
   currentLocation.value = location;
 }
 
