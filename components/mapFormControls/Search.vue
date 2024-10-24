@@ -8,8 +8,15 @@
         type="search"
         class="input input-bordered rounded"
         placeholder="Search..."
+        v-model="searchKeyword"
       />
     </div>
-    <button class="btn rounded">Search</button>
+    <button class="btn rounded" @click.prevent="setCompleteKeyword(searchKeyword)">Search</button>
   </div>
 </template>
+
+<script setup lang="ts">
+  defineProps<{ setCompleteKeyword: (completeKeyword: string) => void }>();
+
+  const searchKeyword = ref('');
+</script>

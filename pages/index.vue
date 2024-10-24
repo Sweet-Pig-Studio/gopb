@@ -5,8 +5,8 @@
       :toggleView="toggleView"
       :filters="filters"
       :cuisineOptions="cuisineOptions"
+      :setCompleteKeyword="setCompleteKeyword"
     />
-    <!-- waiting on next release from nuxt for bug fix -->
     <Map
       v-if="viewMap"
       :locations="filteredData"
@@ -29,6 +29,7 @@ import type { Location } from "~/types/globals.ts";
 const runtimeConfig = useRuntimeConfig();
 const viewMap = useState(() => true);
 const currentLocation = useState<Location | null>(() => null);
+const completeKeyword = useState<string>(() => "");
 
 const { data: locations } = await useAsyncData("locations", () =>
   $fetch<Location[]>(`${runtimeConfig.public.apiURL}/locations`)
@@ -40,6 +41,10 @@ const filteredData = computed(() => {
   const cuisine = filters.cuisine;
   const plantBasedLevel = filters.plantBasedLevel;
   return locations.value.filter((location: Location) => {
+    const searchOptions =
+      completeKeyword.value === ""
+        ? true
+        : location.menu.some((item: string) => item.toLowerCase().includes(completeKeyword.value.toLowerCase()));
     const locationOptions =
       locationType === "Any" || location.category.includes(locationType);
     const cuisineOptions =
@@ -49,7 +54,10 @@ const filteredData = computed(() => {
       (plantBasedLevel === "Fully Plant Based"
         ? location.plantBasedLevel === "full"
         : location.plantBasedLevel === "partial");
-    return locationOptions && cuisineOptions && plantBasedOptions;
+    console.log("search options", searchOptions);
+    return (
+      locationOptions && cuisineOptions && plantBasedOptions && searchOptions
+    );
   });
 });
 
@@ -70,8 +78,12 @@ const cuisineOptions = computed(() => {
 });
 
 function setCurrentLocation(location: Location | null) {
-  console.log(location)
   currentLocation.value = location;
+}
+
+function setCompleteKeyword(keyword: string) {
+  console.log("hi", keyword);
+  completeKeyword.value = keyword;
 }
 
 function toggleView() {

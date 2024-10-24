@@ -2,7 +2,7 @@
   <form
     class="flex w-full component-preview pb-2 items-center justify-between gap-2"
   >
-    <MapFormControlsSearch />
+    <MapFormControlsSearch :setCompleteKeyword="setCompleteKeyword" />
     <div class="flex gap-2">
       <MapFormControlsSelectValues
         :selectOptions="['Any', 'Restaurant', 'Grocery']"
@@ -50,5 +50,6 @@ defineProps<{
   toggleView: (payload: MouseEvent) => void;
   filters: Filters;
   cuisineOptions: string[];
+  setCompleteKeyword: (completeKeyword: string) => void;
 }>();
 </script>
