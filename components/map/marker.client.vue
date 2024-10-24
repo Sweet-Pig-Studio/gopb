@@ -5,7 +5,7 @@
     :coordinates="[location.long, location.lat]"
     anchor="bottom"
   >
-    <MapPopup :location="location"/>
+    <MapPopup :location="location" :setCurrentLocation="setCurrentLocation" />
   </MglMarker>
 </template>
 
@@ -14,6 +14,7 @@
   import { MglMarker } from "@indoorequal/vue-maplibre-gl";
   defineProps<{
     location: Location;
+    setCurrentLocation: (location: Location | null) => void;
   }>();
 </script>
 

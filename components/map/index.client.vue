@@ -7,7 +7,7 @@
   >
     <MglNavigationControl />
     <template v-for="location in locations">
-      <MapMarker :location="location" />
+      <MapMarker :location="location" :setCurrentLocation="setCurrentLocation" />
     </template>
   </MglMap>
 </template>

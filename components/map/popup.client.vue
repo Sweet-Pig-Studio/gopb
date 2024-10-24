@@ -6,7 +6,7 @@
     focusAfterOpen
     closeOnClick
     maxWidth="700px"
-    @close="$emit('update:currentLocation', null)"
+    @close="setCurrentLocation(null)"
   >
     <div class="card rounded w-96">
       <div class="card-body">
@@ -17,7 +17,7 @@
         <LocationStats :location="location" />
         <div class="card-actions flex justify-center items-center mt-6">
           <button
-            @click="$emit('update:currentLocation', location)"
+            @click="setCurrentLocation(location)"
             class="button rounded bg-primary font-bold p-4"
           >
             See More Information
@@ -34,9 +34,6 @@
 
   defineProps<{
     location: Location;
-  }>();
-
-  const emit = defineEmits<{
-    (e: "update:currentLocation", location: Location | null): void;
+    setCurrentLocation: (location: Location | null) => void;
   }>();
 </script>
