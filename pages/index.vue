@@ -25,15 +25,14 @@
 </template>
 <script setup lang="ts">
 import type { Location } from "~/types/globals.ts";
+import { useLocationsStore } from "~/store/locations";
+
+const { locations } = useLocationsStore();
 
 const runtimeConfig = useRuntimeConfig();
 const viewMap = useState(() => true);
 const currentLocation = useState<Location | null>(() => null);
 const completeKeyword = useState<string>(() => "");
-
-const { data: locations } = await useAsyncData("locations", () =>
-  $fetch<Location[]>(`${runtimeConfig.public.apiURL}/locations`)
-);
 
 const filteredData = computed(() => {
   if (!locations.value) return [];

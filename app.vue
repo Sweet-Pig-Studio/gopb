@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const colorMode = useColorMode();
 colorMode.preference = 'light';
 </script>

@@ -10,7 +10,8 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/color-mode",
-    "nuxt-maplibre"
+    "nuxt-maplibre",
+    "@pinia/nuxt"
   ],
   tailwindcss: { exposeConfig: true },
 
